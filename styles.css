@@ -63,7 +63,7 @@ body {
 }
 #result {
   position: fixed;
-  top: 10%; 
+  top: 10%;
   left: 10%;
   transform: translate(-50%, -50%);
   height: 250px;
@@ -75,7 +75,7 @@ body {
   text-align: center;
   padding: 2rem;
 }
-#show-time{
+#show-time {
   text-align: center;
   color: white;
   margin: 10px 0;
@@ -165,6 +165,7 @@ button {
   );
   backdrop-filter: blur(5px);
   margin-bottom: 30px;
+  gap: 5rem;
 }
 
 #modal-background {
@@ -180,7 +181,12 @@ button {
   position: fixed;
   top: 0;
 }
-
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 @media only screen and (max-width: 700px) {
   .box-container {
     padding: 0 20px;

@@ -10,6 +10,9 @@ let userText = "";
 let errorCount = 0;
 let startTime;
 let questionText = "";
+let speedCountTime = 0;
+let keyPressGaps = [];
+let keyPressCount = 0;
 
 // Load and display question
 fetch("./texts.json")
@@ -46,6 +49,10 @@ const typeController = (e) => {
     display.innerHTML += `<span class="green">${
       newLetter === " " ? "▪" : newLetter
     }</span>`;
+    const keyPressTime = new Date().getTime();
+    keyPressGaps.push((keyPressTime - speedCountTime) / 1000);
+    keyPressCount++;
+    speedCountTime = keyPressTime;
   } else {
     display.innerHTML += `<span class="red">${
       newLetter === " " ? "▪" : newLetter
@@ -70,13 +77,21 @@ const validate = (key) => {
 // FINISHED TYPING
 const gameOver = () => {
   document.removeEventListener("keydown", typeController);
+
+  let word_count = userText.replace(".", "").split(" ").length;
+
   // the current time is the finish time
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
   const timeTaken = parseInt((finishTime - startTime) / 1000);
 
+  const typingSpeed = word_count / (timeTaken / 60);
+  const KeyStrokeDelay =
+    keyPressGaps.reduce((init, value) => init + value, 0) / keyPressCount;
+  console.log(typingSpeed, KeyStrokeDelay);
   // show result modal
   resultModal.innerHTML = "";
+
   resultModal.classList.toggle("hidden");
   modalBackground.classList.toggle("hidden");
   // clear user text
@@ -91,7 +106,7 @@ const gameOver = () => {
     <button onclick="closeModal()">Close</button>
   `;
 
-  addHistory(questionText, timeTaken, errorCount);
+  addHistory(questionText, timeTaken, errorCount, typingSpeed, KeyStrokeDelay);
 
   // restart everything
   startTime = null;
@@ -124,6 +139,7 @@ const start = () => {
 
       clearInterval(startCountdown);
       startTime = new Date().getTime();
+      speedCountTime = new Date().getTime();
     }
     count--;
   }, 1000);
