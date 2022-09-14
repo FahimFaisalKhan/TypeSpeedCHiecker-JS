@@ -106,7 +106,13 @@ const gameOver = () => {
     <button onclick="closeModal()">Close</button>
   `;
 
-  addHistory(questionText, timeTaken, errorCount, typingSpeed, KeyStrokeDelay);
+  addHistory(
+    questionText,
+    timeTaken,
+    errorCount,
+    typingSpeed.toFixed(2),
+    KeyStrokeDelay.toFixed(2)
+  );
 
   // restart everything
   startTime = null;
