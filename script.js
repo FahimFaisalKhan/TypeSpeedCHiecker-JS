@@ -102,6 +102,12 @@ const gameOver = () => {
   resultModal.innerHTML += `
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
+    <p>Typing speed: <span class="bold red">${typingSpeed.toFixed(
+      2
+    )}</span>WPM</p>
+    <p>Average key stroke delay: <span class="bold red">${KeyStrokeDelay.toFixed(
+      2
+    )}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
     <button onclick="closeModal()">Close</button>
   `;
