@@ -69,11 +69,25 @@
         tabindex="0"
         class="collapse collapse-arrow border border-yellow-100 bg-warning rounded-box md:w-8/12"
       >
-        <div class="collapse-title text-2xl font-medium">Q3.?</div>
+        <div class="collapse-title text-2xl font-medium">
+          Q3. How does the event loop work?
+        </div>
         <div class="collapse-content font-semibold">
-          <p class="text-2xl">Ans::</p>
+          <p class="text-2xl">Ans:Event loop:</p>
           <p class="bg-yellow-200 text-slate-700 rounded-lg p-4 mt-2 text-xl">
-            .
+            To understand event loop we need to understand 3 things , which are:
+            Call stack, web APIs and task queue. As javascript is a single
+            threaded language , when it does something which takes comparatively
+            long time than other codes it can blocks the browsers functionality
+            and while running those asynchronus codes browser cant do anything
+            else. Callstack is a data structure which keeps the track of the
+            code that are being executed. When we run an asynchronus code , to
+            avoid the browsers blocking behavior we pass the async code from the
+            callstack to browsers webAPI and the async code executes there and
+            the result is passed to the task queue. The eventloop loop basically
+            checks the callstack if it is empty or not , if it is empty it takes
+            the async codes result and passes it to stack and waits for the
+            stack to clear and then pass another result fromo taskque(if any).
           </p>
         </div>
       </div>
@@ -81,12 +95,21 @@
         tabindex="0"
         class="collapse collapse-arrow border border-primary bg-warning rounded-box md:w-8/12"
       >
-        <div class="collapse-title text-2xl font-medium">Q4. ?</div>
+        <div class="collapse-title text-2xl font-medium">
+          Q4.What are reasons behind getting undefined in javascript?
+        </div>
         <div class="collapse-content font-semibold">
-          <p class="text-2xl">Ans::</p>
-          <p
-            class="bg-yellow-200 text-slate-700 rounded-lg p-4 mt-2 text-xl"
-          ></p>
+          <p class="text-2xl">Ans:Why Undefined!:</p>
+          <p class="bg-yellow-200 text-slate-700 rounded-lg p-4 mt-2 text-xl">
+            There are several cases in which we can see undefined in javascript.
+            But all reasons have the same core concept which is: We are trying
+            to access/show/get something which is not declared or we can say
+            which is not found within our script, it can be a variable or an
+            object property or an array item . Also if value of a variable is an
+            empty string , the type of the variable will be undefined. If we
+            declare a variable but dont asssign any value then also the type of
+            that variable will be undefined
+          </p>
         </div>
       </div>
     </section>
